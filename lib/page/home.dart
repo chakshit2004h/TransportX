@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -22,163 +23,216 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        child: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blueAccent, Colors.lightBlue],
-                  begin: Alignment.topLeft,
-                  end: Alignment.topRight,
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 340.0),
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
-                    ),
-                  ),
-                  child: Column(
-
+      body: Hero(
+        tag: "animate",
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: Colors.white,
+          child: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.blueAccent, Colors.lightBlue],
+                    begin: Alignment.topLeft,
+                    end: Alignment.topRight,
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 40.0, left: 30),
-              child: SizedBox(
-                width: 400,
-                height: 300,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Row(
-                      children: [
-                        Text(
-                          'Hello,',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(width: 270),
-                        Icon(
-                          Icons.account_circle_sharp,
-                          size: 35,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                    const Text(
-                      "Username",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 340.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40),
                       ),
                     ),
-                    const SizedBox(height: 30),
-                    const Text(
-                      "Where you will Go",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10,
-                              offset: Offset(0, 4),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 100,),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 30.0),
+                          child: Text("Choose your Transport",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 30.0,left: 50.0),
+                              child: Container(
+                                width: 350,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.lightBlue,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 15.0,left: 15.0),
+                                          child: const Text("Bus",style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.white),),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 60,),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 15.0),
+                                        child: Container(
+                                          width: 150,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: const Center(child: Text("Select",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Search...',
-                            border: InputBorder.none,
-                            icon: Icon(Icons.search, color: Colors.blueAccent),
-                          ),
-                        ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              top: 290,
-              left: 50,
-              child: Material(
-                elevation: 20,
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  width: 350,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Column(
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0, left: 30),
+                child: SizedBox(
+                  width: 400,
+                  height: 300,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      const Row(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0,left: 20.0),
-                            child: Text("Balance", style: TextStyle(fontSize: 18,),),
+                          Text(
+                            'Hello,',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0,left: 45.0),
-                            child: Text("Rewards", style: TextStyle(fontSize: 18,),),
+                          SizedBox(width: 270),
+                          Icon(
+                            Icons.account_circle_sharp,
+                            size: 35,
+                            color: Colors.white,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0,left: 40.0),
-                            child: Text("Total Trip", style: TextStyle(fontSize: 18,),),
-                          )
                         ],
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 10.0,left: 20.0),
-                            child: Text("\$ 0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                      const Text(
+                        "Username",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      const Text(
+                        "Where you will Go",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 10,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0,left: 85.0),
-                            child: Text("\$ 0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Search...',
+                              border: InputBorder.none,
+                              icon: Icon(Icons.search, color: Colors.blueAccent),
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0,left: 100.0),
-                            child: Text("0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                          )
-                        ],
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                top: 290,
+                left: 50,
+                child: Material(
+                  elevation: 20,
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    width: 350,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 20.0,left: 20.0),
+                              child: Text("Balance", style: TextStyle(fontSize: 18,),),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 20.0,left: 45.0),
+                              child: Text("Rewards", style: TextStyle(fontSize: 18,),),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 20.0,left: 40.0),
+                              child: Text("Total Trip", style: TextStyle(fontSize: 18,),),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 10.0,left: 20.0),
+                              child: Text("\$ 0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 20.0,left: 85.0),
+                              child: Text("\$ 0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 20.0,left: 100.0),
+                              child: Text("0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
