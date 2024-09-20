@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:transportx/page/bus.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -53,39 +55,49 @@ class _HomeState extends State<Home> {
                         topRight: Radius.circular(40),
                       ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 100,),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 30.0),
-                          child: Text("Choose your Transport",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 30.0,left: 50.0),
-                              child: Container(
-                                width: 350,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  color: Colors.lightBlue,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 15.0,left: 15.0),
-                                          child: const Text("Bus",style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.white),),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 60,),
+                    child: SingleChildScrollView( // Make this scrollable
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 100),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 30.0),
+                            child: Text(
+                              "Choose your Transport",
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                child: Container(
+                                  width: 350,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightBlue,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                                            child: Text(
+                                              "Bus",
+                                              style: TextStyle(
+                                                  fontSize: 35,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 60),
                                       Padding(
                                         padding: const EdgeInsets.only(left: 15.0),
                                         child: Container(
@@ -95,16 +107,174 @@ class _HomeState extends State<Home> {
                                             color: Colors.white,
                                             borderRadius: BorderRadius.circular(20),
                                           ),
-                                          child: const Center(child: Text("Select",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
+                                          child: Center(
+                                              child: GestureDetector(
+                                                onTap: (){
+                                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
+                                                },
+                                                child: const Text(
+                                                  "Select",
+                                                  style: TextStyle(
+                                                      fontSize: 25, fontWeight: FontWeight.bold),
+                                                ),
+                                              )),
                                         ),
                                       ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                child: Container(
+                                  width: 350,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightBlue,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                                            child: Text(
+                                              "Train",
+                                              style: TextStyle(
+                                                  fontSize: 35,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 60),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 15.0),
+                                        child: Container(
+                                          width: 150,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: const Center(
+                                              child: Text(
+                                                "Select",
+                                                style: TextStyle(
+                                                    fontSize: 25, fontWeight: FontWeight.bold),
+                                              )),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                child: Container(
+                                  width: 350,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightBlue,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                                            child: Text(
+                                              "Car",
+                                              style: TextStyle(
+                                                  fontSize: 35,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 60),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 15.0),
+                                        child: Container(
+                                          width: 150,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: const Center(
+                                              child: Text(
+                                                "Select",
+                                                style: TextStyle(
+                                                    fontSize: 25, fontWeight: FontWeight.bold),
+                                              )),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                child: Container(
+                                  width: 350,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightBlue,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                                            child: Text(
+                                              "Metro",
+                                              style: TextStyle(
+                                                  fontSize: 35,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 60),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 15.0),
+                                        child: Container(
+                                          width: 150,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: const Center(
+                                              child: Text(
+                                                "Select",
+                                                style: TextStyle(
+                                                    fontSize: 25, fontWeight: FontWeight.bold),
+                                              )),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -197,32 +367,50 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 20.0,left: 20.0),
-                              child: Text("Balance", style: TextStyle(fontSize: 18,),),
+                              padding: EdgeInsets.only(top: 20.0, left: 20.0),
+                              child: Text(
+                                "Balance",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 20.0,left: 45.0),
-                              child: Text("Rewards", style: TextStyle(fontSize: 18,),),
+                              padding: EdgeInsets.only(top: 20.0, left: 45.0),
+                              child: Text(
+                                "Rewards",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 20.0,left: 40.0),
-                              child: Text("Total Trip", style: TextStyle(fontSize: 18,),),
+                              padding: EdgeInsets.only(top: 20.0, left: 40.0),
+                              child: Text(
+                                "Total Trip",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             )
                           ],
                         ),
                         Row(
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 10.0,left: 20.0),
-                              child: Text("\$ 0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                              padding: EdgeInsets.only(top: 10.0, left: 20.0),
+                              child: Text(
+                                "\$ 0",
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 20.0,left: 85.0),
-                              child: Text("\$ 0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                              padding: EdgeInsets.only(top: 20.0, left: 85.0),
+                              child: Text(
+                                "\$ 0",
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 20.0,left: 100.0),
-                              child: Text("0", style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                              padding: EdgeInsets.only(top: 20.0, left: 100.0),
+                              child: Text(
+                                "0",
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
                             )
                           ],
                         ),
@@ -238,15 +426,15 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,size: 35,),
+            icon: Icon(Icons.home, size: 35),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle,size: 35,),
+            icon: Icon(Icons.account_circle, size: 35),
             label: 'Account',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on,size: 35,),
+            icon: Icon(Icons.location_on, size: 35),
             label: 'Location',
           ),
         ],

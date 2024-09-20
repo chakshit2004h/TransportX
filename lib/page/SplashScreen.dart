@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:transportx/page/login.dart';
+import 'package:transportx/page/signup.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -51,7 +52,7 @@ class _SplashscreenState extends State<Splashscreen> with SingleTickerProviderSt
 
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => const Login(),
+      pageBuilder: (context, animation, secondaryAnimation) => const Signup(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(
           opacity: animation,

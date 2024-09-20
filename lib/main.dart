@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:transportx/page/SplashScreen.dart';
+import 'package:transportx/page/bus.dart';
 import 'package:transportx/page/home.dart';
+import 'package:transportx/page/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Splashscreen(),
+      home: const Home(),
     );
   }
 }
