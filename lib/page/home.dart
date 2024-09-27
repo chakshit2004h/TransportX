@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:transportx/page/bus.dart';
+import 'package:transportx/page/metro.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -83,43 +84,56 @@ class _HomeState extends State<Home> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Row(
+                                      Row(
                                         children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
-                                            child: Text(
-                                              "Bus",
-                                              style: TextStyle(
-                                                  fontSize: 35,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 60),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 15.0),
-                                        child: Container(
-                                          width: 150,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(20),
-                                          ),
-                                          child: Center(
-                                              child: GestureDetector(
-                                                onTap: (){
-                                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
-                                                },
-                                                child: const Text(
-                                                  "Select",
+                                          Column(
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.only(left: 15.0),
+                                                child: Text(
+                                                  "Bus",
                                                   style: TextStyle(
-                                                      fontSize: 25, fontWeight: FontWeight.bold),
+                                                    fontSize: 35,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
-                                              )),
-                                        ),
-                                      ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 15.0, top: 10.0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    foregroundColor: Colors.lightBlue, backgroundColor: Colors.white, // Text color
+                                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                    ),
+                                                  ),
+                                                  child: const Text(
+                                                    "Select",
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(width: 20,),
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 20.0),
+                                            child: SizedBox(
+                                              width: 180,
+                                              height: 150,
+                                              child: Image.asset("assets/images/Bus.png"),
+                                            ),
+                                          ),
+                                        ],
+                                      ), // Add some spacing between elements
                                     ],
                                   ),
                                 ),
@@ -137,38 +151,56 @@ class _HomeState extends State<Home> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Row(
+                                      Row(
                                         children: [
+                                          Column(
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.only(left: 15.0),
+                                                child: Text(
+                                                  "Metro",
+                                                  style: TextStyle(
+                                                    fontSize: 35,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 15.0, top: 10.0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Metro()));
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    foregroundColor: Colors.lightBlue, backgroundColor: Colors.white, // Text color
+                                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                    ),
+                                                  ),
+                                                  child: const Text(
+                                                    "Select",
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(width: 20,),
                                           Padding(
-                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
-                                            child: Text(
-                                              "Train",
-                                              style: TextStyle(
-                                                  fontSize: 35,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                            padding: const EdgeInsets.only(top: 20.0),
+                                            child: SizedBox(
+                                              width: 180,
+                                              height: 150,
+                                              child: Image.asset("assets/images/metro.png"),
                                             ),
                                           ),
                                         ],
-                                      ),
-                                      const SizedBox(height: 60),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 15.0),
-                                        child: Container(
-                                          width: 150,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(20),
-                                          ),
-                                          child: const Center(
-                                              child: Text(
-                                                "Select",
-                                                style: TextStyle(
-                                                    fontSize: 25, fontWeight: FontWeight.bold),
-                                              )),
-                                        ),
-                                      ),
+                                      ), // Add some spacing between elements
                                     ],
                                   ),
                                 ),
@@ -186,38 +218,56 @@ class _HomeState extends State<Home> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Row(
+                                      Row(
                                         children: [
+                                          Column(
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.only(left: 15.0),
+                                                child: Text(
+                                                  "Car",
+                                                  style: TextStyle(
+                                                    fontSize: 35,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 15.0, top: 10.0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    foregroundColor: Colors.lightBlue, backgroundColor: Colors.white, // Text color
+                                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                    ),
+                                                  ),
+                                                  child: const Text(
+                                                    "Select",
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(width: 20,),
                                           Padding(
-                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
-                                            child: Text(
-                                              "Car",
-                                              style: TextStyle(
-                                                  fontSize: 35,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                            padding: const EdgeInsets.only(top: 20.0),
+                                            child: SizedBox(
+                                              width: 180,
+                                              height: 150,
+                                              child: Image.asset("assets/images/Bus.png"),
                                             ),
                                           ),
                                         ],
-                                      ),
-                                      const SizedBox(height: 60),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 15.0),
-                                        child: Container(
-                                          width: 150,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(20),
-                                          ),
-                                          child: const Center(
-                                              child: Text(
-                                                "Select",
-                                                style: TextStyle(
-                                                    fontSize: 25, fontWeight: FontWeight.bold),
-                                              )),
-                                        ),
-                                      ),
+                                      ), // Add some spacing between elements
                                     ],
                                   ),
                                 ),
@@ -235,38 +285,56 @@ class _HomeState extends State<Home> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Row(
+                                      Row(
                                         children: [
+                                          Column(
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.only(left: 15.0),
+                                                child: Text(
+                                                  "Train",
+                                                  style: TextStyle(
+                                                    fontSize: 35,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 15.0, top: 10.0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    foregroundColor: Colors.lightBlue, backgroundColor: Colors.white, // Text color
+                                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                    ),
+                                                  ),
+                                                  child: const Text(
+                                                    "Select",
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(width: 20,),
                                           Padding(
-                                            padding: EdgeInsets.only(top: 15.0, left: 15.0),
-                                            child: Text(
-                                              "Metro",
-                                              style: TextStyle(
-                                                  fontSize: 35,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                            padding: const EdgeInsets.only(top: 20.0),
+                                            child: SizedBox(
+                                              width: 180,
+                                              height: 150,
+                                              child: Image.asset("assets/images/Bus.png"),
                                             ),
                                           ),
                                         ],
-                                      ),
-                                      const SizedBox(height: 60),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 15.0),
-                                        child: Container(
-                                          width: 150,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(20),
-                                          ),
-                                          child: const Center(
-                                              child: Text(
-                                                "Select",
-                                                style: TextStyle(
-                                                    fontSize: 25, fontWeight: FontWeight.bold),
-                                              )),
-                                        ),
-                                      ),
+                                      ), // Add some spacing between elements
                                     ],
                                   ),
                                 ),

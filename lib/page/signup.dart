@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:transportx/page/home.dart';
 import 'package:transportx/page/login.dart';
 
@@ -16,10 +17,35 @@ class _SignupState extends State<Signup> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? _errorMessage;
+
+  // Function to handle Firebase sign-up
+  Future<void> _signUp() async {
+    if (_passwordController.text != _confirmPasswordController.text) {
+      setState(() {
+        _errorMessage = 'Passwords do not match';
+      });
+      return;
+    }
+
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _errorMessage = e.message;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50], // Light blue background
+      backgroundColor: Colors.blue[50],
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -39,7 +65,17 @@ class _SignupState extends State<Signup> {
                 ),
                 const SizedBox(height: 40),
 
-                // Name TextField
+                // Display error message
+                if (_errorMessage != null)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      _errorMessage!,
+                      style: TextStyle(color: Colors.red, fontSize: 16),
+                    ),
+                  ),
+
+                // Full Name TextField
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -49,17 +85,8 @@ class _SignupState extends State<Signup> {
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade200, width: 1.5),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade700, width: 2.0),
-                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -74,17 +101,8 @@ class _SignupState extends State<Signup> {
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade200, width: 1.5),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade700, width: 2.0),
-                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -99,17 +117,8 @@ class _SignupState extends State<Signup> {
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade200, width: 1.5),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade700, width: 2.0),
-                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -125,17 +134,8 @@ class _SignupState extends State<Signup> {
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade200, width: 1.5),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade700, width: 2.0),
-                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -151,26 +151,15 @@ class _SignupState extends State<Signup> {
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade200, width: 1.5),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue.shade700, width: 2.0),
-                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
 
                 // Sign Up Button
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-                  },
+                  onPressed: _signUp,
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                     shape: RoundedRectangleBorder(
@@ -187,16 +176,17 @@ class _SignupState extends State<Signup> {
                 ),
                 const SizedBox(height: 50),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 50.0),
-                      child: Text("Already have account? ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800),),
-                    ),
+                    const Text("Already have an account? ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
                       },
-                      child: const Text("Login",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color: Colors.blueAccent),),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.blueAccent),
+                      ),
                     ),
                   ],
                 ),

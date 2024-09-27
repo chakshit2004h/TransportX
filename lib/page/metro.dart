@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Bus extends StatefulWidget {
-  const Bus({super.key});
+class Metro extends StatefulWidget {
+  const Metro({super.key});
 
   @override
-  State<Bus> createState() => _BusState();
+  State<Metro> createState() => _MetroState();
 }
 
-class _BusState extends State<Bus> {
+class _MetroState extends State<Metro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +28,9 @@ class _BusState extends State<Bus> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(top: 50.0, left: 170),
+                  padding: EdgeInsets.only(top: 50.0, left: 130),
                   child: Text(
-                    "Bus",
+                    "Metro",
                     style: TextStyle(
                       fontSize: 80,
                       fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class _BusState extends State<Bus> {
                   width: double.infinity,
                   height: 200,
                   child: Image.asset(
-                    "assets/images/Bus.png",
+                    "assets/images/metro.png",
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -62,7 +62,7 @@ class _BusState extends State<Bus> {
                   topRight: Radius.circular(40),
                 ),
               ),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -78,7 +78,7 @@ class _BusState extends State<Bus> {
                       ),
                     ),
                   ),
-                  
+
                 ],
               ),
             ),
