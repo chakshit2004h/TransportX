@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:transportx/page/bus.dart';
 import 'package:transportx/page/metro.dart';
+import 'package:transportx/page/train.dart';
+
+import 'car.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -72,7 +75,7 @@ class _HomeState extends State<Home> {
                           Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                padding: const EdgeInsets.only(top: 30.0, left: 20.0),
                                 child: Container(
                                   width: 350,
                                   height: 200,
@@ -139,7 +142,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                padding: const EdgeInsets.only(top: 30.0, left: 20.0),
                                 child: Container(
                                   width: 350,
                                   height: 200,
@@ -206,7 +209,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                padding: const EdgeInsets.only(top: 30.0, left: 20.0),
                                 child: Container(
                                   width: 350,
                                   height: 200,
@@ -237,7 +240,7 @@ class _HomeState extends State<Home> {
                                                 padding: const EdgeInsets.only(left: 15.0, top: 10.0),
                                                 child: ElevatedButton(
                                                   onPressed: () {
-                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
+                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Car()));
                                                   },
                                                   style: ElevatedButton.styleFrom(
                                                     foregroundColor: Colors.lightBlue, backgroundColor: Colors.white, // Text color
@@ -273,7 +276,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 30.0, left: 50.0),
+                                padding: const EdgeInsets.only(top: 30.0, left: 20.0),
                                 child: Container(
                                   width: 350,
                                   height: 200,
@@ -304,7 +307,7 @@ class _HomeState extends State<Home> {
                                                 padding: const EdgeInsets.only(left: 15.0, top: 10.0),
                                                 child: ElevatedButton(
                                                   onPressed: () {
-                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Bus()));
+                                                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Train()));
                                                   },
                                                   style: ElevatedButton.styleFrom(
                                                     foregroundColor: Colors.lightBlue, backgroundColor: Colors.white, // Text color
@@ -366,7 +369,7 @@ class _HomeState extends State<Home> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 270),
+                          SizedBox(width: 220),
                           Icon(
                             Icons.account_circle_sharp,
                             size: 35,
@@ -390,7 +393,8 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          width: 350,
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(30),
@@ -417,7 +421,7 @@ class _HomeState extends State<Home> {
               ),
               Positioned(
                 top: 290,
-                left: 50,
+                left: 30,
                 child: Material(
                   elevation: 20,
                   borderRadius: BorderRadius.circular(20),
@@ -498,8 +502,8 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle, size: 35),
-            label: 'Account',
+            icon: Icon(Icons.bookmark_border, size: 35),
+            label: 'Booking',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.location_on, size: 35),

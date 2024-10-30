@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:transportx/page/home.dart';
 
-class Bus extends StatefulWidget {
-  const Bus({super.key});
+class Train extends StatefulWidget {
+  const Train({super.key});
 
   @override
-  _BusBookingPageState createState() => _BusBookingPageState();
+  _TrainBookingPageState createState() => _TrainBookingPageState();
 }
 
-class _BusBookingPageState extends State<Bus> {
-  String? _selectedBus;
+class _TrainBookingPageState extends State<Train> {
+  String? _selectedTrain;
   String? _selectedDeparture;
   String? _selectedArrival;
   String? _selectedSeat;
   DateTime? _departureTime;
   DateTime? _arrivalTime;
 
-  final List<String> buses = ['Express Bus 1', 'Luxury Bus 2', 'VIP Bus 3'];
-  final List<String> locations = ['City Center', 'Airport', 'Station'];
+  final List<String> trains = ['Train A', 'Train B', 'Train C'];
+  final List<String> locations = ['Downtown', 'Central Station', 'Mall'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Bus Booking",
+          "Train Booking",
           style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blue,
@@ -40,7 +40,7 @@ class _BusBookingPageState extends State<Bus> {
                 child: Column(
                   children: [
                     Image.asset(
-                      'assets/images/Bus.png',
+                      'assets/images/Train.png', // Ensure this image exists in your assets
                       height: 100,
                     ),
                     const SizedBox(height: 16),
@@ -49,22 +49,22 @@ class _BusBookingPageState extends State<Bus> {
               ),
               const SizedBox(height: 30),
               const Text(
-                "Choose Bus",
+                "Choose Train",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               DropdownButton<String>(
-                value: _selectedBus,
+                value: _selectedTrain,
                 isExpanded: true,
-                hint: const Text("Select Bus"),
-                items: buses.map((String bus) {
+                hint: const Text("Select Train"),
+                items: trains.map((String train) {
                   return DropdownMenuItem<String>(
-                    value: bus,
-                    child: Text(bus),
+                    value: train,
+                    child: Text(train),
                   );
                 }).toList(),
                 onChanged: (String? newValue) {
                   setState(() {
-                    _selectedBus = newValue;
+                    _selectedTrain = newValue;
                   });
                 },
               ),
@@ -194,24 +194,22 @@ class _BusBookingPageState extends State<Bus> {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Show confirmation dialog and navigate to home
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: const Text("Booking Confirmed"),
-                          content: const Text("Bus booked successfully!"),
+                          content: const Text("Train booked successfully!"),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pop(); // Close the dialog
-                                Navigator.of(context).pop(); // Navigate back to home
+                                Navigator.of(context).pop();
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Home()),
+                                );
                               },
-                              child: GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
-                                }
-                                  ,child: const Text("OK")),
+                              child: const Text("OK"),
                             ),
                           ],
                         );
@@ -220,8 +218,7 @@ class _BusBookingPageState extends State<Bus> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

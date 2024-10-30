@@ -96,7 +96,7 @@ class _SplashscreenState extends State<Splashscreen> with SingleTickerProviderSt
                         TextSpan(
                           text: 'TRANSPORT',
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 30,
                             color: Colors.black,
                             fontFamily: 'goblin',
                             fontWeight: FontWeight.bold,

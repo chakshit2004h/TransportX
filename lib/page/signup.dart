@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:transportx/page/home.dart';
 import 'package:transportx/page/login.dart';
 
@@ -11,36 +10,6 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
-
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  String? _errorMessage;
-
-  // Function to handle Firebase sign-up
-  Future<void> _signUp() async {
-    if (_passwordController.text != _confirmPasswordController.text) {
-      setState(() {
-        _errorMessage = 'Passwords do not match';
-      });
-      return;
-    }
-
-    try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        _errorMessage = e.message;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,18 +35,8 @@ class _SignupState extends State<Signup> {
                 const SizedBox(height: 40),
 
                 // Display error message
-                if (_errorMessage != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Text(
-                      _errorMessage!,
-                      style: TextStyle(color: Colors.red, fontSize: 16),
-                    ),
-                  ),
-
                 // Full Name TextField
                 TextField(
-                  controller: _nameController,
                   decoration: InputDecoration(
                     labelText: 'Full Name',
                     prefixIcon: Icon(Icons.person, color: Colors.blue[700]),
@@ -93,7 +52,6 @@ class _SignupState extends State<Signup> {
 
                 // Username TextField
                 TextField(
-                  controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: 'Username',
                     prefixIcon: Icon(Icons.account_circle, color: Colors.blue[700]),
@@ -109,7 +67,6 @@ class _SignupState extends State<Signup> {
 
                 // Email TextField
                 TextField(
-                  controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     prefixIcon: Icon(Icons.email, color: Colors.blue[700]),
@@ -125,7 +82,6 @@ class _SignupState extends State<Signup> {
 
                 // Password TextField
                 TextField(
-                  controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -142,7 +98,6 @@ class _SignupState extends State<Signup> {
 
                 // Confirm Password TextField
                 TextField(
-                  controller: _confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Confirm Password',
@@ -159,19 +114,10 @@ class _SignupState extends State<Signup> {
 
                 // Sign Up Button
                 ElevatedButton(
-                  onPressed: _signUp,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 5,
-                    shadowColor: Colors.blue[200],
-                    backgroundColor: Colors.blue[700],
-                  ),
+                  onPressed: (){},
                   child: const Text(
                     'Sign Up',
-                    style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(height: 50),

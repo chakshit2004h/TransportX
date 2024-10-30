@@ -1,145 +1,237 @@
 import 'package:flutter/material.dart';
+import 'package:transportx/page/home.dart';
 
 class Metro extends StatefulWidget {
   const Metro({super.key});
 
   @override
-  State<Metro> createState() => _MetroState();
+  _MetroBookingPageState createState() => _MetroBookingPageState();
 }
 
-class _MetroState extends State<Metro> {
+class _MetroBookingPageState extends State<Metro> {
+  String? _selectedMetro;
+  String? _selectedDeparture;
+  String? _selectedArrival;
+  String? _selectedSeat;
+  DateTime? _departureTime;
+  DateTime? _arrivalTime;
+
+  final List<String> metros = ['Metro Line 1', 'Metro Line 2', 'Metro Line 3'];
+  final List<String> locations = ['Downtown', 'Central Station', 'Mall'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.blue, Colors.lightBlue],
-                begin: Alignment.topLeft,
-                end: Alignment.topRight,
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 50.0, left: 130),
-                  child: Text(
-                    "Metro",
-                    style: TextStyle(
-                      fontSize: 80,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 200,
-                  child: Image.asset(
-                    "assets/images/metro.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 380.0),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
-                ),
-              ),
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  SizedBox(height: 320),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Text(
-                      "Choose Schedule",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            top: 420,
-            left: 50,
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(30),
-              shadowColor: Colors.lightBlue,
-              child: Container(
-                width: 350,
-                height: 250,
-                decoration: BoxDecoration(
-                  color: Colors.white54,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                padding: const EdgeInsets.all(16),
+      appBar: AppBar(
+        title: Text(
+          "Metro Booking",
+          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Let's Go!",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Image.asset(
+                      'assets/images/metro.png', // Ensure this image exists in your assets
+                      height: 100,
                     ),
-                    const SizedBox(height: 20),
-                    // From TextField
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'From',
-                        prefixIcon: const Icon(Icons.location_on),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    // To TextField
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'To',
-                        prefixIcon: const Icon(Icons.location_on),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                      ),
-                    ),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
-            ),
+              const SizedBox(height: 30),
+              const Text(
+                "Choose Metro",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              DropdownButton<String>(
+                value: _selectedMetro,
+                isExpanded: true,
+                hint: const Text("Select Metro"),
+                items: metros.map((String metro) {
+                  return DropdownMenuItem<String>(
+                    value: metro,
+                    child: Text(metro),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedMetro = newValue;
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                "Departure Location",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              DropdownButton<String>(
+                value: _selectedDeparture,
+                isExpanded: true,
+                hint: const Text("Select Departure Location"),
+                items: locations.map((String location) {
+                  return DropdownMenuItem<String>(
+                    value: location,
+                    child: Text(location),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedDeparture = newValue;
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                "Arrival Location",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              DropdownButton<String>(
+                value: _selectedArrival,
+                isExpanded: true,
+                hint: const Text("Select Arrival Location"),
+                items: locations.map((String location) {
+                  return DropdownMenuItem<String>(
+                    value: location,
+                    child: Text(location),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedArrival = newValue;
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                "Select Departure Time",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              TextButton(
+                onPressed: () async {
+                  final selectedTime = await showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                  );
+                  if (selectedTime != null) {
+                    setState(() {
+                      _departureTime = DateTime(
+                        DateTime.now().year,
+                        DateTime.now().month,
+                        DateTime.now().day,
+                        selectedTime.hour,
+                        selectedTime.minute,
+                      );
+                    });
+                  }
+                },
+                child: Text(
+                  _departureTime != null
+                      ? '${_departureTime!.hour}:${_departureTime!.minute}'
+                      : "Pick Time",
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                "Select Arrival Time",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              TextButton(
+                onPressed: () async {
+                  final selectedTime = await showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                  );
+                  if (selectedTime != null) {
+                    setState(() {
+                      _arrivalTime = DateTime(
+                        DateTime.now().year,
+                        DateTime.now().month,
+                        DateTime.now().day,
+                        selectedTime.hour,
+                        selectedTime.minute,
+                      );
+                    });
+                  }
+                },
+                child: Text(
+                  _arrivalTime != null
+                      ? '${_arrivalTime!.hour}:${_arrivalTime!.minute}'
+                      : "Pick Time",
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                "Select Seat",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              DropdownButton<String>(
+                value: _selectedSeat,
+                isExpanded: true,
+                hint: const Text("Select Seat"),
+                items: List.generate(30, (index) => "Seat ${index + 1}")
+                    .map((String seat) {
+                  return DropdownMenuItem<String>(
+                    value: seat,
+                    child: Text(seat),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedSeat = newValue;
+                  });
+                },
+              ),
+              const SizedBox(height: 24),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text("Booking Confirmed"),
+                          content: const Text("Metro booked successfully!"),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Home()),
+                                );
+                              },
+                              child: const Text("OK"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    "Confirm Booking",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
